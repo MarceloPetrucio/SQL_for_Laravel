@@ -5,6 +5,7 @@ object Form1: TForm1
   ClientHeight = 504
   ClientWidth = 964
   Fill.Kind = Solid
+  WindowState = wsMaximized
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
@@ -253,6 +254,7 @@ object Form1: TForm1
           object TxtOld: TMemo
             Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
             DataDetectorTypes = []
+            OnChangeTracking = TxtOldChangeTracking
             Align = Client
             Margins.Left = 15.000000000000000000
             Margins.Top = 15.000000000000000000
@@ -262,6 +264,7 @@ object Form1: TForm1
             Size.Height = 454.000000000000000000
             Size.PlatformDefault = False
             TabOrder = 0
+            OnEnter = TxtOldEnter
             Viewport.Width = 354.000000000000000000
             Viewport.Height = 450.000000000000000000
           end

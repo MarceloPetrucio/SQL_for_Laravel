@@ -4,12 +4,12 @@
     <Transaction>2018/06/21 08:22:15.000.356,=C:\Users\Dark\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
     <Transaction>2018/06/21 08:57:03.000.718,=C:\Users\Dark\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
     <Transaction>2018/06/21 09:03:31.000.902,=C:\Users\Dark\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>2018/06/29 14:34:01.980,=C:\Users\Dark\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>2018/06/29 15:26:23.260,C:\Users\Dark\Documents\PC\Exemplos\Dark\UMenuPrincipal.fmx=C:\Users\Dark\Documents\Embarcadero\Studio\Projects\Unit1.fmx</Transaction>
-    <Transaction>2018/06/29 15:26:23.260,C:\Users\Dark\Documents\PC\Exemplos\Dark\UMenuPrincipal.pas=C:\Users\Dark\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>2018/06/29 15:26:31.550,C:\Users\Dark\Documents\PC\Exemplos\Dark\Conversor.dproj=C:\Users\Dark\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>2018/06/29 14:34:01.000.980,=C:\Users\Dark\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2018/06/29 15:26:23.000.260,C:\Users\Dark\Documents\Embarcadero\Studio\Projects\Unit1.fmx=C:\Users\Dark\Documents\PC\Exemplos\Dark\UMenuPrincipal.fmx</Transaction>
+    <Transaction>2018/06/29 15:26:23.000.260,C:\Users\Dark\Documents\Embarcadero\Studio\Projects\Unit1.pas=C:\Users\Dark\Documents\PC\Exemplos\Dark\UMenuPrincipal.pas</Transaction>
+    <Transaction>2018/06/29 15:26:31.000.550,C:\Users\Dark\Documents\Embarcadero\Studio\Projects\Project1.dproj=C:\Users\Dark\Documents\PC\Exemplos\Dark\Conversor.dproj</Transaction>
   </Transactions>
 	<ActiveMobileDevice>
-		<NoProfile iOSSimulator="iPhone5" Android="4ad86de8"/>
-	</ActiveMobileDevice>
+		<NoProfile iOSSimulator="iPhone5" Android=""/>  <PMacOS iOSSimulator="iPhone5"/>
+  </ActiveMobileDevice>
 </BorlandProject>

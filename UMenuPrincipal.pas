@@ -6,7 +6,7 @@ uses
   System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.StdCtrls,
   FMX.Controls.Presentation, FMX.ScrollBox, FMX.Memo, FMX.Layouts, FMX.Objects,
-  FMX.Edit;
+  FMX.Edit, FMX.Platform;
 
 type
   TForm1 = class(TForm)
@@ -36,6 +36,8 @@ type
     TxtSubstAposto: TEdit;
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
+    procedure TxtOldChangeTracking(Sender: TObject);
+    procedure TxtOldEnter(Sender: TObject);
   private
     { Private declarations }
   public
@@ -56,6 +58,7 @@ var
   wSufix : String;
   wAspas : String;
   wNewText : String;
+  Clipboard: IFMXClipboardService;
 begin
    wPrefix := TxtPrefixo.Text;
    wSufix  := TxtSufixo.Text;
@@ -70,14 +73,34 @@ begin
          Else
             wNewText := TxtOld.Lines[I].Replace(TxtApostofo.Text,TxtSubstAposto.Text);
 
-         TxtNew.Lines.Add(wPrefix + wNewText + wSufix);
+         if I = TxtOld.Lines.Count -1 then
+            TxtNew.Lines.Add(wPrefix + wNewText + '''')
+         Else
+            TxtNew.Lines.Add(wPrefix + wNewText + wSufix);
       End;
+
+   if TPlatformServices.Current.SupportsPlatformService(IFMXClipboardService,
+      IInterface(Clipboard)) then
+        begin
+          Clipboard.SetClipboard(TxtNew.Lines.Text);
+        end;
 end;
 
 procedure TForm1.Button2Click(Sender: TObject);
 begin
    TxtOld.Lines.Clear;
    TxtNew.Lines.Clear;
+end;
+
+procedure TForm1.TxtOldChangeTracking(Sender: TObject);
+begin
+   if TxtOld.Lines.Text <> '' then
+      Button1Click(Self);
+end;
+
+procedure TForm1.TxtOldEnter(Sender: TObject);
+begin
+   Button2Click(Self);
 end;
 
 end.

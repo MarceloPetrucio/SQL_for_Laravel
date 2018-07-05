@@ -1,0 +1,106 @@
+unit UMenuPrincipal;
+
+interface
+
+uses
+  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
+  FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.StdCtrls,
+  FMX.Controls.Presentation, FMX.ScrollBox, FMX.Memo, FMX.Layouts, FMX.Objects,
+  FMX.Edit, FMX.Platform;
+
+type
+  TForm1 = class(TForm)
+    Layout1: TLayout;
+    Rectangle1: TRectangle;
+    Layout2: TLayout;
+    Layout3: TLayout;
+    GridPanelLayout1: TGridPanelLayout;
+    Layout4: TLayout;
+    Layout5: TLayout;
+    TxtOld: TMemo;
+    TxtNew: TMemo;
+    Button1: TButton;
+    Button2: TButton;
+    GroupBox1: TGroupBox;
+    Layout6: TLayout;
+    TxtPrefixo: TEdit;
+    Label1: TLabel;
+    Layout7: TLayout;
+    TxtSufixo: TEdit;
+    Label2: TLabel;
+    Layout8: TLayout;
+    Label3: TLabel;
+    ChkBox: TCheckBox;
+    TxtApostofo: TEdit;
+    Label4: TLabel;
+    TxtSubstAposto: TEdit;
+    procedure Button1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+    procedure TxtOldChangeTracking(Sender: TObject);
+    procedure TxtOldEnter(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.fmx}
+
+procedure TForm1.Button1Click(Sender: TObject);
+var
+  I: Integer;
+  wPrefix : String;
+  wSufix : String;
+  wAspas : String;
+  wNewText : String;
+  Clipboard: IFMXClipboardService;
+begin
+   wPrefix := TxtPrefixo.Text;
+   wSufix  := TxtSufixo.Text;
+
+
+   TxtNew.Lines.Clear;
+
+   for I := 0 to TxtOld.Lines.Count -1 do
+      Begin
+         if ChkBox.IsChecked then
+            wNewText := TxtOld.Lines[I].Replace(TxtApostofo.Text,TxtSubstAposto.Text).Trim
+         Else
+            wNewText := TxtOld.Lines[I].Replace(TxtApostofo.Text,TxtSubstAposto.Text);
+
+         if I = TxtOld.Lines.Count -1 then
+            TxtNew.Lines.Add(wPrefix + wNewText + ''' ;')
+         Else
+            TxtNew.Lines.Add(wPrefix + wNewText + wSufix);
+      End;
+
+   if TPlatformServices.Current.SupportsPlatformService(IFMXClipboardService,
+      IInterface(Clipboard)) then
+        begin
+          Clipboard.SetClipboard(TxtNew.Lines.Text);
+        end;
+end;
+
+procedure TForm1.Button2Click(Sender: TObject);
+begin
+   TxtOld.Lines.Clear;
+   TxtNew.Lines.Clear;
+end;
+
+procedure TForm1.TxtOldChangeTracking(Sender: TObject);
+begin
+   if TxtOld.Lines.Text <> '' then
+      Button1Click(Self);
+end;
+
+procedure TForm1.TxtOldEnter(Sender: TObject);
+begin
+   Button2Click(Self);
+end;
+
+end.
